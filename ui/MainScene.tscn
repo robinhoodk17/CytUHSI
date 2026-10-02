@@ -1,0 +1,476 @@
+[gd_scene format=3 uid="uid://bykxb5o74co5"]
+
+[ext_resource type="Script" uid="uid://44rfi1q2vgcy" path="res://ui/r_script_manager.gd" id="1_8b1mw"]
+[ext_resource type="Script" uid="uid://b6id2qa5rn6w6" path="res://ui/make_files_smaller/make_files_smaller.gd" id="2_8fkj3"]
+[ext_resource type="Script" uid="uid://420tcmjnki0s" path="res://ui/pathways_analysis/pathways.gd" id="3_c04c2"]
+[ext_resource type="Script" uid="uid://bshfowsg5jw2u" path="res://ui/correlation_matrix/correlation_matrix.gd" id="4_343dx"]
+[ext_resource type="Texture2D" uid="uid://crlpc6b3v7ph4" path="res://ui/pathway_excel_file.png" id="4_sla8v"]
+[ext_resource type="Script" uid="uid://xk4rc43ug7uu" path="res://ui/correlation_with_single_marker/correlation_with_marker.gd" id="5_nyffs"]
+[ext_resource type="Texture2D" uid="uid://dvvj38hxmr16j" path="res://ui/pathway_marker_mismatch.png" id="5_wk6q7"]
+[ext_resource type="Script" uid="uid://da7m2wdlsve2h" path="res://ui/rename_parameters/rename_parameters.gd" id="5_yem67"]
+[ext_resource type="Texture2D" uid="uid://d2sula3rbxtl4" path="res://ui/correlation_matrix/example_image.png" id="7_q7b4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fkj3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk6q7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="RScriptManager" type="Control" unique_id=2086843575]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8b1mw")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1042091035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1105860633]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer" unique_id=1693973868]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="MakeFilesSmaller" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=1625634738 node_paths=PackedStringArray("make_sure_panel", "final_confirm", "cancel_at_last_minute")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Make files smaller"
+script = ExtResource("2_8fkj3")
+make_sure_panel = NodePath("../../../../SmallerFilesWizard/MakeSurePanel")
+final_confirm = NodePath("../../../../SmallerFilesWizard/MakeSurePanel/HBoxContainer/Final_confirm")
+cancel_at_last_minute = NodePath("../../../../SmallerFilesWizard/MakeSurePanel/HBoxContainer/Cancel")
+
+[node name="Pathways" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=231821249]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Pathway Analysis"
+script = ExtResource("3_c04c2")
+
+[node name="CorrelationMatrix" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=455849520 node_paths=PackedStringArray("wizard", "processing_label")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Correlation 
+matrices"
+script = ExtResource("4_343dx")
+wizard = NodePath("../../../../CorrlationMatrixWizard")
+processing_label = NodePath("../../../../CorrlationMatrixWizard/VBoxContainer/ProcessingLabel")
+
+[node name="CorrelationWithMarker" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=1625898639 node_paths=PackedStringArray("wizard", "line_edit", "start_analysis_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Correlation with
+single marker"
+script = ExtResource("5_nyffs")
+wizard = NodePath("../../../../CorrSnglMarkWizard")
+line_edit = NodePath("../../../../CorrSnglMarkWizard/VBoxContainer/LineEdit")
+start_analysis_button = NodePath("../../../../CorrSnglMarkWizard/VBoxContainer/StartAnalysis")
+
+[node name="RenameParameters" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=638504294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Fix parameter names 
+in CSV file"
+script = ExtResource("5_yem67")
+
+[node name="ConditionSimilarity" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=762655405]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "similarity index
+ across conditions"
+
+[node name="SplitFlowjoFile" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=1573848206]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Un-concatenate 
+fcs file"
+
+[node name="DummyButton3" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=783473533]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "DummyButton"
+
+[node name="Exit" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=1699660108]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="SmallerFilesWizard" type="Panel" parent="." unique_id=1227666904]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8fkj3")
+
+[node name="ProcessingLabel" type="Label" parent="SmallerFilesWizard" unique_id=1784724476]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -11.5
+offset_right = 48.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Processing..."
+
+[node name="CheckboxesContainer" type="VBoxContainer" parent="SmallerFilesWizard" unique_id=174005583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainButtonsContainer" type="HBoxContainer" parent="SmallerFilesWizard/CheckboxesContainer" unique_id=1142993815]
+layout_mode = 2
+
+[node name="Cancel" type="Button" parent="SmallerFilesWizard/CheckboxesContainer/MainButtonsContainer" unique_id=413420884]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 47
+text = "Cancel"
+
+[node name="Confirm" type="Button" parent="SmallerFilesWizard/CheckboxesContainer/MainButtonsContainer" unique_id=167435475]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 47
+text = "Finished Selecting"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SmallerFilesWizard/CheckboxesContainer" unique_id=404814562]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="SmallerFilesWizard/CheckboxesContainer/ScrollContainer" unique_id=1867221943]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MakeSurePanel" type="Panel" parent="SmallerFilesWizard" unique_id=266102904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wk6q7")
+
+[node name="Label" type="Label" parent="SmallerFilesWizard/MakeSurePanel" unique_id=75090147]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+text = "Warning: This process will overwrite your file. Are you sure you want to continue?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SmallerFilesWizard/MakeSurePanel" unique_id=513109012]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -337.0
+offset_right = 81.0
+offset_bottom = -297.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 184
+
+[node name="Cancel" type="Button" parent="SmallerFilesWizard/MakeSurePanel/HBoxContainer" unique_id=232887692]
+layout_mode = 2
+theme_override_font_sizes/font_size = 77
+text = "Cancel"
+
+[node name="Final_confirm" type="Button" parent="SmallerFilesWizard/MakeSurePanel/HBoxContainer" unique_id=1933768148]
+layout_mode = 2
+theme_override_font_sizes/font_size = 77
+text = "I'm sure!"
+
+[node name="PathwayAnalysisWizard" type="Panel" parent="." unique_id=281561823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8fkj3")
+
+[node name="ProcessingLabel" type="Label" parent="PathwayAnalysisWizard" unique_id=1108290765]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -11.5
+offset_right = 48.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Processing..."
+
+[node name="MainButtonsContainer" type="HBoxContainer" parent="PathwayAnalysisWizard" unique_id=1197655052]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 1400.0
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="Cancel" type="Button" parent="PathwayAnalysisWizard/MainButtonsContainer" unique_id=1216523898]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 47
+text = "Cancel"
+
+[node name="TryAgain" type="Button" parent="PathwayAnalysisWizard/MainButtonsContainer" unique_id=1720099221]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 47
+text = "Try again"
+
+[node name="Errors" type="Control" parent="PathwayAnalysisWizard" unique_id=445134803]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ForgotMarkerHeadersError" type="MarginContainer" parent="PathwayAnalysisWizard/Errors" unique_id=1432257271]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PathwayAnalysisWizard/Errors/ForgotMarkerHeadersError" unique_id=154613588]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PathwayAnalysisWizard/Errors/ForgotMarkerHeadersError/VBoxContainer" unique_id=881323679]
+custom_minimum_size = Vector2(1080, 340)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "You forgot to add the word \"marker\" or \"pathway\" as headers in your excel file. Here is an example of how to do it correctly. Check for spelling error and make sure that they are spelled exactly like this:"
+autowrap_mode = 3
+
+[node name="ExamplePathways" type="TextureRect" parent="PathwayAnalysisWizard/Errors/ForgotMarkerHeadersError/VBoxContainer" unique_id=1243098751]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("4_sla8v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BadMarkerNamesError" type="MarginContainer" parent="PathwayAnalysisWizard/Errors" unique_id=1843865783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PathwayAnalysisWizard/Errors/BadMarkerNamesError" unique_id=1838875130]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ExampleMarkers" type="TextureRect" parent="PathwayAnalysisWizard/Errors/BadMarkerNamesError/VBoxContainer" unique_id=1352373769]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("5_wk6q7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PathwayAnalysisWizard/Errors/BadMarkerNamesError/VBoxContainer" unique_id=1248954932]
+custom_minimum_size = Vector2(1080, 340)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "One of the names in your pathway file was not found in the positive populations folder. Make sure everything is named exactly the same! These are the problematic markers:"
+autowrap_mode = 3
+
+[node name="Markers" type="Label" parent="PathwayAnalysisWizard/Errors/BadMarkerNamesError/VBoxContainer" unique_id=476180736]
+custom_minimum_size = Vector2(1080, 340)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 40
+text = "One of the names in your pathway file was not found in the positive populations folder. Make sure everything is named exactly the same! These are the problematic markers:"
+autowrap_mode = 3
+
+[node name="CorrlationMatrixWizard" type="Panel" parent="." unique_id=1191006552]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8fkj3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CorrlationMatrixWizard" unique_id=396009160]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProcessingLabel" type="Label" parent="CorrlationMatrixWizard/VBoxContainer" unique_id=249645300]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 42
+text = "Make sure your files follow the instructions below."
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CorrlationMatrixWizard/VBoxContainer" unique_id=1141447472]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_q7b4t")
+expand_mode = 1
+
+[node name="CorrSnglMarkWizard" type="Panel" parent="." unique_id=1749074223]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8fkj3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CorrSnglMarkWizard" unique_id=2037825439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProcessingLabel" type="Label" parent="CorrSnglMarkWizard/VBoxContainer" unique_id=163205629]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Marker name (make sure it's exactly the same name as in your files)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="LineEdit" type="LineEdit" parent="CorrSnglMarkWizard/VBoxContainer" unique_id=1116842112]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Your marker's name here"
+alignment = 1
+caret_blink = true
+
+[node name="StartAnalysis" type="Button" parent="CorrSnglMarkWizard/VBoxContainer" unique_id=1962438348]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Start analysis"
+
+[node name="ConditionSimilarityWizard" type="Panel" parent="." unique_id=776516187]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8fkj3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConditionSimilarityWizard" unique_id=1102907456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProcessingLabel" type="Label" parent="ConditionSimilarityWizard/VBoxContainer" unique_id=221332828]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 42
+text = "Make sure your files follow the instructions below."
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ConditionSimilarityWizard/VBoxContainer" unique_id=735103371]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_q7b4t")
+expand_mode = 1

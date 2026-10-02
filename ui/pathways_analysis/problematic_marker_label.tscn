@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dyll7r5hfgquc"]
+
+[node name="Label" type="Label" unique_id=2019996235]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "CD31"

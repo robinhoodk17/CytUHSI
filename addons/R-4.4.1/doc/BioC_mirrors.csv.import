@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c802p6b1uxof6"
+
+[deps]
+
+files=["res://addons/R-4.4.1/doc/BioC_mirrors.Country.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.City.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.URL.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Host.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Maintainer.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.OK.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.CountryCode.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Comment.translation"]
+
+source_file="res://addons/R-4.4.1/doc/BioC_mirrors.csv"
+dest_files=["res://addons/R-4.4.1/doc/BioC_mirrors.Country.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.City.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.URL.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Host.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Maintainer.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.OK.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.CountryCode.translation", "res://addons/R-4.4.1/doc/BioC_mirrors.Comment.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
