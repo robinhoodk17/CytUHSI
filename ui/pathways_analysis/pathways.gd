@@ -55,7 +55,7 @@ func start_selection() -> void:
 	await get_tree().create_timer(0.05).timeout
 	
 	var script_name = str(GlobalVariables.r_scripts_folder, initial_parameter_selection)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	print_debug("looking for  ", pathways_obtained_from_r_file)
 	FileLoader.look_for_file(pathways_obtained_from_r_file)
 	await FileLoader.file_found
@@ -67,7 +67,7 @@ func start_selection() -> void:
 		return
 
 	script_name = str(GlobalVariables.r_scripts_folder, checking_markers_are_well_named)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	FileLoader.look_for_file(positive_population_folder)
 	await FileLoader.file_found
 	print_debug("file found")
@@ -78,12 +78,14 @@ func start_selection() -> void:
 		var error_file : FileAccess = FileAccess.open(GlobalVariables.json_files + "errors",FileAccess.READ)
 		var concatenated : String = error_file.get_as_text()
 		markers.text = concatenated
+		print_debug("found a problem")
 		return
 	
 	script_name = str(GlobalVariables.r_scripts_folder, check_markers_in_samples_are_well_named)
 	processing_label.show()
 	try_again_button.hide()
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	print_debug("executing  ", script_name)
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	
 	processing_label.hide()
 	if FileAccess.file_exists(GlobalVariables.json_files + "errors"):
@@ -96,7 +98,7 @@ func start_selection() -> void:
 	script_name = str(GlobalVariables.r_scripts_folder, pathway_analysis_script)
 	processing_label.show()
 	try_again_button.hide()
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	
 	processing_label.hide()
 	hide_wizard()

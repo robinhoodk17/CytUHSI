@@ -28,5 +28,5 @@ func start_selection() -> void:
 	processing_label.show()
 	await get_tree().create_timer(0.05).timeout
 	var script_name = str(GlobalVariables.r_scripts_folder, correlation_matrix_script)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	hide_wizard()

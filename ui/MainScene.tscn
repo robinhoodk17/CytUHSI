@@ -113,6 +113,7 @@ in CSV file"
 script = ExtResource("5_yem67")
 
 [node name="ConditionSimilarity" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=762655405]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -120,6 +121,7 @@ text = "similarity index
  across conditions"
 
 [node name="SplitFlowjoFile" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=1573848206]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -127,6 +129,7 @@ text = "Un-concatenate
 fcs file"
 
 [node name="DummyButton3" type="Button" parent="MarginContainer/ScrollContainer/GridContainer" unique_id=783473533]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -246,6 +249,7 @@ theme_override_font_sizes/font_size = 77
 text = "I'm sure!"
 
 [node name="PathwayAnalysisWizard" type="Panel" parent="." unique_id=281561823]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,7 +293,6 @@ theme_override_font_sizes/font_size = 47
 text = "Try again"
 
 [node name="Errors" type="Control" parent="PathwayAnalysisWizard" unique_id=445134803]
-visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

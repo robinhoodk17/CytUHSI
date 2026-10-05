@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func run_r_file() -> void:
 	var script_name = str(GlobalVariables.r_scripts_folder, script_file_name)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])

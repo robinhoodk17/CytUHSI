@@ -48,10 +48,10 @@ func start_selection() -> void:
 	await get_tree().create_timer(0.05).timeout
 	
 	var script_name = str(GlobalVariables.r_scripts_folder, script_file_name)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	FileLoader.look_for_file(original_names_file)
 	await FileLoader.file_found
-	
+	print_debug("finished")
 	processing_label.hide()
 	var json_as_text = FileAccess.get_file_as_string(original_names_file)
 	var all_parameters : PackedStringArray = json_as_text.split(",")
@@ -94,5 +94,5 @@ func write_final_file() -> void:
 	file.store_string(all_names)
 	file.close()
 	var script_name = str(GlobalVariables.r_scripts_folder, confirm_script_file_name)
-	OS.execute(GlobalVariables.r_script_exe, [script_name])
+	OS.execute(GlobalVariables.r_script_exe, [script_name, GlobalVariables.r_scripts_folder, GlobalVariables.json_files])
 	hide_wizard()
